@@ -111,22 +111,24 @@ function setUp ()
 end
 
 function cread ()
+	term.setCursorBlink(true)
 	while true do
 		if nStringd == nil then
 			nStringd = ""
 		end
 		scrWid, scrHei = term.getSize()
 		if nStringd:len() > scrWid-3 then
-			nBufferString = nStringd:sub(nString:len()-(scrWid-3),nStringd:len())
+			nBufferString = nStringd:sub(nStringd:len()-(scrWid-3),nStringd:len())
 		else
 			nBufferString = nStringd..string.rep(" ",(scrWid-3)-nStringd:len())
 		end
 		term.setCursorPos(3,scrHei)
 		term.setTextColor(colors.white)
 		write(nBufferString)
+		term.setCursorPos(3+nStringd:len())
 		action, char = os.pullEvent()
 		if action == "char" then
-			nString = nStringd..char
+			nStringd = nStringd..char
 		end
 		if action == "key" then
 			if char == keys.backspace then
