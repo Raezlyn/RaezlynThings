@@ -136,7 +136,7 @@ function cread ()
 		if action == "key" then
 			if char == keys.backspace then
 				if nString:len() > 0 then
-					nStringd = nStringd:sub(1,nString:len()-1)
+					nStringd = nStringd:sub(1,nStringd:len()-1)
 				end
 			end
 			
@@ -163,7 +163,7 @@ function cN ()
 			if chkT(nmsg) == false then
 				broadcastN(nmsg)
 			else
-				pasreCommand(nmsg)
+				parseCommand(nmsg)
 			end
 		end
 		sleep(0)
