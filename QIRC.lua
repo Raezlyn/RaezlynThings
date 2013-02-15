@@ -24,7 +24,7 @@ end
 
 Channel = "GLOBAL"
 Nickname = "Anon"
-ChatHistory = {}
+ChatHistory = { [1]="Welcome! Use /join <channel> to get started!" }
 ChatScrolled = 0
 
 function cPrint ( nString )
@@ -88,10 +88,15 @@ function broadcastN ( nString )
 	rednet.broadcast(Nickname..": "..nString)
 end
 
+nicks = {}
+
 function recN ()
 	while true do
 		act, sed, txt = os.pullEvent()
 		if act == "rednet_message" then
+			if txt == "/whois "..Nickname then
+				rednet.broadcast("* Was pinged!")
+			end
 			ChatHistory[#ChatHistory+1] = "("..tostring(sed)..") "..txt
 			charRoll()
 		end
@@ -156,6 +161,39 @@ function cN ()
 				pasreCommand(nmsg)
 			end
 		end
+		sleep(0)
+	end
+end
+
+function commands.join ( nChan )
+	os.sleep(0.5)
+	Channel = nChan
+	setUp()
+	broadcastN("* Joined channel!")
+end
+
+function commands.whois ( nPers )
+	rednet.broadcast("/whois "..nPers)
+end
+
+function commands.pm ( nID, nMSG )
+	if tonumber(nID) == nil then
+		ChatHistory[#ChatHistory+1] = "Invalid ID"
+	else
+		if nMSG ~= nil then
+			rednet.send(nID, Nickname.."> "..nMSG)
+		else
+			ChatHistory[#ChatHistory+1] = "Can't send empty message!"
+		end
+	end
+end
+
+function commands.nick ( nNick )
+	if nNick ~= nil then
+		broadcastN("* Changed nickname to "..nNick)
+		Nickname = nNick
+	else
+		chatHistory[#chatHistory+1] = "Must be valid nick!"
 	end
 end
 
