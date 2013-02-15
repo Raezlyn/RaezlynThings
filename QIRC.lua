@@ -122,6 +122,7 @@ function cread ()
 			nBufferString = nStringd..string.rep(" ",(scrWid-3)-nStringd:len())
 		end
 		term.setCursorPos(3,scrHei)
+		term.setTextColor(colors.white)
 		write(nBufferString)
 		action, char = os.pullEvent()
 		if action == "char" then
@@ -153,7 +154,7 @@ function cN ()
 		if nmsg == "/exit" then break end
 		if nmsg == "" or nmsg == " " then
 			ChatHistory[#ChatHistory+1]="Can't send empty message!"
-			chatRoll()
+			charRoll()
 		else
 			if chkT(nmsg) == false then
 				broadcastN(nmsg)
