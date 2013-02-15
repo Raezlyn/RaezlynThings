@@ -135,7 +135,7 @@ function cread ()
 		end
 		if action == "key" then
 			if char == keys.backspace then
-				if nString:len() > 0 then
+				if nStringd:len() > 0 then
 					nStringd = nStringd:sub(1,nStringd:len()-1)
 				end
 			end
