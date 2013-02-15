@@ -104,7 +104,7 @@ function recN ()
 end
 
 function setUp ()
-	for n,m in ipairs(rs.getSides())
+	for n,m in ipairs(rs.getSides()) do
 		rednet.close(m)
 		rednet.open(m, Channel)
 	end
