@@ -95,7 +95,7 @@ function recN ()
 		act, sed, txt = os.pullEvent()
 		if act == "rednet_message" then
 			if txt == "/whois "..Nickname then
-				rednet.broadcast("* Was pinged!")
+				broadcastN("* Was pinged!")
 			end
 			ChatHistory[#ChatHistory+1] = "("..tostring(sed)..") "..txt
 			charRoll()
