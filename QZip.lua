@@ -142,7 +142,7 @@ function qzip.zip ( nDir )
 	else
 		typeO = "nep"
 		ax=fs.open(nDir,"r")
-		nLines = split(ax,"\n")
+		nLines = split(ax.readAll(),"\n")
 		ax:close()
 		for n,m in pairs(nLines) do
 			nLines[n] = textutils.unserialize(m)
