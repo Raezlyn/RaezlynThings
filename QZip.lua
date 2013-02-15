@@ -59,7 +59,7 @@ function qzip.cread ()
 		if nString == nil then
 			nString = ""
 		end
-		if nString:len() > noption:len()+5 then
+		if nString:len() > noption:len()+4 then
 			nBufferString = nString:sub(nString:len()-(noption:len()+5),nString:len())
 		else
 			nBufferString = nString..string.rep(" ",(noption:len()+5)-nString:len())
@@ -132,7 +132,7 @@ function qzip.zip ( nDir )
 		cDir = nDir
 		for n,m in pairs(fs.list(nDir)) do
 			if fs.isDir(nDir.."/"..m) == false then
-				nDW = nDW..qzip.eat(nDir.."/"..m)
+				nDW = nDW..textutils.serialize(qzip.eat(nDir.."/"..m))
 			end
 		end
 		return nDW
@@ -161,6 +161,7 @@ function qzip.main ()
 	dir = qzip.cread()
 	term.setCursorPos(2,6)
 	term.setTextColor(colors.blue)
+	term.setBackgroundColor(colors.white)
 	if fs.isDir(dir) then
 		write("Zipping...")
 	else
