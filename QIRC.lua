@@ -120,15 +120,15 @@ function cread ()
 			nStringd = ""
 		end
 		scrWid, scrHei = term.getSize()
-		if nStringd:len() > scrWid-3 then
-			nBufferString = nStringd:sub(nStringd:len()-(scrWid-3),nStringd:len())
+		if nStringd:len() > scrWid-4 then
+			nBufferString = nStringd:sub(nStringd:len()-(scrWid-4),nStringd:len())
 		else
-			nBufferString = nStringd..string.rep(" ",(scrWid-3)-nStringd:len())
+			nBufferString = nStringd..string.rep(" ",(scrWid-4)-nStringd:len())
 		end
-		term.setCursorPos(3,scrHei)
+		term.setCursorPos(4,scrHei)
 		term.setTextColor(colors.white)
 		write(nBufferString)
-		term.setCursorPos(3+nStringd:len(),scrHei)
+		term.setCursorPos(4+nStringd:len(),scrHei)
 		action, char = os.pullEvent()
 		if action == "char" then
 			nStringd = nStringd..char
