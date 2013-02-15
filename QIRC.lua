@@ -105,8 +105,10 @@ end
 
 function setUp ()
 	for n,m in ipairs(rs.getSides()) do
+		if peripheral.getType(m) == "modem" then
 		rednet.close(m)
 		rednet.open(m, Channel)
+		end
 	end
 end
 
