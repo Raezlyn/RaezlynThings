@@ -116,7 +116,7 @@ function cread ()
 			nStringd = ""
 		end
 		scrWid, scrHei = term.getSize()
-		if nString:len() > noption:len()+4 then
+		if nStringd:len() > scrWid-3 then
 			nBufferString = nStringd:sub(nString:len()-(scrWid-3),nStringd:len())
 		else
 			nBufferString = nStringd..string.rep(" ",(scrWid-3)-nStringd:len())
