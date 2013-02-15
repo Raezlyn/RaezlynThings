@@ -133,6 +133,9 @@ function qzip.zip ( nDir )
 		for n,m in pairs(fs.list(nDir)) do
 			if fs.isDir(nDir.."/"..m) == false then
 				nDW = nDW..textutils.serialize(qzip.eat(nDir.."/"..m))
+				if n ~= #fs.list(nDir) then
+					nDW=nDW.."\n"
+				end
 			end
 		end
 		return nDW
