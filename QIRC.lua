@@ -125,7 +125,7 @@ function cread ()
 		term.setCursorPos(3,scrHei)
 		term.setTextColor(colors.white)
 		write(nBufferString)
-		term.setCursorPos(3+nStringd:len())
+		term.setCursorPos(3+nStringd:len(),scrHei)
 		action, char = os.pullEvent()
 		if action == "char" then
 			nStringd = nStringd..char
