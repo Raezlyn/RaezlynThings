@@ -201,6 +201,7 @@ function commands.nick ( nNick )
 end
 
 MainDraw()
+setUp()
 
 parallel.waitForAny(
 	cN,
