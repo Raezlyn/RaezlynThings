@@ -76,9 +76,7 @@ function qzip.cread ()
 					nString = nString:sub(1,nString:len()-1)
 				end
 			end
-			if char == keys.space then
-				nString = nString.." "
-			end
+			
 			if char == keys.delete then
 				nString = ""
 			end

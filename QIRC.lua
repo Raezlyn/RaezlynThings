@@ -114,6 +114,7 @@ end
 
 function cread ()
 	term.setCursorBlink(true)
+	nStringd = nil
 	while true do
 		if nStringd == nil then
 			nStringd = ""
@@ -138,9 +139,7 @@ function cread ()
 					nStringd = nStringd:sub(1,nString:len()-1)
 				end
 			end
-			if char == keys.space then
-				nStringd = nStringd.." "
-			end
+			
 			if char == keys.delete then
 				nStringd = ""
 			end
@@ -155,6 +154,7 @@ end
 function cN ()
 	while true do
 		nmsg = cread()
+		nStringd = nil
 		if nmsg == "/exit" then break end
 		if nmsg == "" or nmsg == " " then
 			ChatHistory[#ChatHistory+1]="Can't send empty message!"
